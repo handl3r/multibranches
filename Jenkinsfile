@@ -11,6 +11,7 @@ pipeline {
     stages {
         stage('Pre Test') {
             steps {
+                sh git branch
                 echo 'Installing dependencies'
                 sh 'go version'
                 sh 'go get -u golang.org/x/lint/golint'
@@ -20,6 +21,7 @@ pipeline {
         stage('Test') {
                 steps {
                     withEnv(["PATH+GO=${GOPATH}/bin"]){
+                        sh git branch
                         echo 'Running vetting'
                         sh 'go vet .'
                         echo 'Running linting'
@@ -35,6 +37,7 @@ pipeline {
                 branch 'develop'
             }
             steps {
+                sh git branch
                 echo 'Compiling and building'
                 sh 'go build'
                 sh './testJ'
