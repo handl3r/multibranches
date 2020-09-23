@@ -20,9 +20,8 @@ pipeline {
         stage('Test') {
                 steps {
                     withEnv(["PATH+GO=${GOPATH}/bin"]){
-                        echo "${PATH+GO}"
                         sh 'pwd'
-                        echo 'Running vetting'
+                        echo 'Running vetting here'
                         sh 'go vet .'
                         echo 'Running linting'
                         sh 'golint .'
