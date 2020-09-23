@@ -20,7 +20,7 @@ pipeline {
         stage('Test') {
                 steps {
                     withEnv(["PATH+GO=${GOPATH}/bin"]){
-                        echo "${GOPATH}"
+                        sh 'pwd'
                         echo 'Running vetting'
                         sh 'go vet .'
                         echo 'Running linting'
@@ -33,12 +33,12 @@ pipeline {
 
         stage('Build And Deploy') {
             when {
-                branch 'develop'
+                branch 'master'
             }
             steps {
                 echo 'Compiling and building'
-                sh 'go build'
-                sh './testJ'
+                sh 'go build -o main main.go'
+                sh './main'
             }
         }
 
