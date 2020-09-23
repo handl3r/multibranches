@@ -21,8 +21,6 @@ pipeline {
         stage('Test') {
                 steps {
                     withEnv(["PATH+GO=${GOPATH}/bin"]){
-                        sh 'git branch'
-                        echo 'Running vetting'
                         sh 'go vet .'
                         echo 'Running linting'
                         sh 'golint .'
@@ -34,7 +32,7 @@ pipeline {
 
         stage('Build And Deploy') {
             when {
-                branch 'develop'
+                branch 'master'
             }
             steps {
                 sh 'git branch'
