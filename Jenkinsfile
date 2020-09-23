@@ -40,8 +40,7 @@ pipeline {
                 sh 'go build -o main main.go'
                 sh './main'
                 sshagent(['my-ssh-key']) {
-                    sh 'scp -v ./main thai@192.168.1.10:~/app'
-                    sh 'ls'
+                    sh 'touch x'
                 }
             }
         }
