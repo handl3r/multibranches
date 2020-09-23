@@ -40,7 +40,7 @@ pipeline {
                 sh 'go build -o main main.go'
                 sh './main'
                 sshagent(['my-ssh-key']) {
-                    sh 'touch x'
+                    sh 'ssh -t -t thai@192.168.1.10 -o StrictHostKeyChecking=no "echo pwd"'
                 }
             }
         }
