@@ -21,7 +21,7 @@ pipeline {
                 steps {
                     withEnv(["PATH+GO=${GOPATH}/bin"]){
                         sh 'pwd'
-                        echo 'Running vetting'
+                        echo 'Running vetting here'
                         sh 'go vet .'
                         echo 'Running linting'
                         sh 'golint .'
