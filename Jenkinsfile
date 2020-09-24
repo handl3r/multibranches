@@ -45,7 +45,7 @@ pipeline {
 //                     sh(script: " ssh thai@192.168.1.10 'echo $1 | ~/app/main ",
 //                      returnStdout: true )
                      sh '''
-                        ssh -v thai@192.168.1.10 'echo $1 | ~/app/main'
+                        ssh thai@192.168.1.10 '~/app/main > ~/app/start.log &'
                      '''
                 }
             }

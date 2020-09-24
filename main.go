@@ -14,7 +14,7 @@ func main() {
 }
 
 func Ping(w http.ResponseWriter, r *http.Request) {
-	_, _ = fmt.Fprintf(w, "Pong v2")
+	_, _ = fmt.Fprintf(w, "Pong v3")
 }
 
 func Min(a, b int) int {
