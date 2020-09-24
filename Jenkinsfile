@@ -40,7 +40,7 @@ pipeline {
                 sh 'go build -o main main.go'
                 sshagent(['my-ssh-key']) {
                     sh 'scp ./main thai@192.168.1.10:~/app/'
-                    sh 'touch x'
+                    sh 'ssh thai@192.168.1.10 pkill main; ./main &; netstat -ltnp | grep -w ":8000"'
                 }
             }
         }
