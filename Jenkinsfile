@@ -43,7 +43,7 @@ pipeline {
                     sh 'scp ./main thai@192.168.1.10:~/app/'
 //                     sh 'ssh thai@192.168.1.10 './main &'  ' netstat -ltnp | grep -w ":8000" ''
                     sh(script: " ssh thai@192.168.1.10 '~/app/main &'  'netstat -ltnp | grep -w :8000' ",
-                     returnStdout: true )
+                     returnStdout: false )
                 }
             }
         }
