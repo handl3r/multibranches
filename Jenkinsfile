@@ -41,6 +41,7 @@ pipeline {
                 sh './main'
                 sshagent(['my-ssh-key']) {
                     sh 'scp ./main thai@192.168.1.10:~/app/'
+                    sh 'touch x'
                 }
             }
         }
