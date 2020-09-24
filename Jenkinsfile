@@ -42,8 +42,11 @@ pipeline {
                     sh 'ssh thai@192.168.1.10 pkill main'
                     sh 'scp ./main thai@192.168.1.10:~/app/'
 //                     sh 'ssh thai@192.168.1.10 './main &'  ' netstat -ltnp | grep -w ":8000" ''
-                    sh(script: " ssh thai@192.168.1.10 'echo $1 | ~/app/main ",
-                     returnStdout: true )
+//                     sh(script: " ssh thai@192.168.1.10 'echo $1 | ~/app/main ",
+//                      returnStdout: true )
+                     sh '''
+                        ssh thai@192.168.1.10 'echo $1 | ~/app/main
+                     '''
                 }
             }
         }
