@@ -41,7 +41,7 @@ pipeline {
                 sshagent(['my-ssh-key']) {
                     sh 'ssh thai@192.168.1.10 pkill main'
                     sh 'scp ./main thai@192.168.1.10:~/app/'
-                    sh 'ssh thai@192.168.1.10 ./main &; netstat -ltnp | grep -w ":8000"'
+                    sh "ssh thai@192.168.1.10 './main &'  ' netstat -ltnp | grep -w ":8000" '"
                 }
             }
         }
