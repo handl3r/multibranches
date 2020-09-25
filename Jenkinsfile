@@ -24,6 +24,7 @@ pipeline {
                 sh 'ls'
                 sh 'go version'
                 sh 'go get -u golang.org/x/lint/golint'
+                sh 'go get'
 
             }
         }
@@ -31,7 +32,6 @@ pipeline {
         stage('Test') {
                 steps {
                     withEnv(["PATH+GO=${GOPATH}/bin"]){
-                        sh 'go get'
                         sh 'go vet .'
                         echo 'Running linting'
                         sh 'golint .'
