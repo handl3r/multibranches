@@ -8,7 +8,15 @@ pipeline {
         CGO_ENABLED = 0
         GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
     }
+
     stages {
+        stage('setup workspace') {
+            steps {
+                sh 'export GOPATH=/var/lib/jenkins/jobs/project/workspace'
+                sh 'export PATH=$GOPATH/bin:$PATH'
+            }
+        }
+
         stage('Pre Test') {
             steps {
                 echo 'Installing dependencies'
