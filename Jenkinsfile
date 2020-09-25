@@ -12,15 +12,16 @@ pipeline {
     stages {
         stage('setup workspace') {
             steps {
-                sh 'export GOPATH=/var/jenkins_home/workspace/'
-                sh 'export PATH=$GOPATH/bin:$PATH'
+//                 sh 'export GOPATH=/var/jenkins_home/workspace/'
+//                 sh 'export PATH=$GOPATH/bin:$PATH'
             }
         }
 
         stage('Pre Test') {
             steps {
                 echo 'Installing dependencies'
-                echo GOPATH
+                sh 'go mod tidy'
+                sh 'ls'
                 sh 'go version'
                 sh 'go get -u golang.org/x/lint/golint'
                 sh 'go get'
