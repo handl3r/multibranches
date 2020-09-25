@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('setup workspace') {
             steps {
-                sh 'export GOPATH=/var/lib/jenkins/jobs/project/workspace'
+                sh 'export GOPATH=/var/jenkins_home/workspace/'
                 sh 'export PATH=$GOPATH/bin:$PATH'
             }
         }
