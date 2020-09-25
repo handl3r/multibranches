@@ -10,12 +10,12 @@ pipeline {
     }
 
     stages {
-        stage('setup workspace') {
-            steps {
-//                 sh 'export GOPATH=/var/jenkins_home/workspace/'
-//                 sh 'export PATH=$GOPATH/bin:$PATH'
-            }
-        }
+//         stage('setup workspace') {
+//             steps {
+// //                 sh 'export GOPATH=/var/jenkins_home/workspace/'
+// //                 sh 'export PATH=$GOPATH/bin:$PATH'
+//             }
+//         }
 
         stage('Pre Test') {
             steps {
@@ -24,13 +24,14 @@ pipeline {
                 sh 'ls'
                 sh 'go version'
                 sh 'go get -u golang.org/x/lint/golint'
-                sh 'go get'
+
             }
         }
 
         stage('Test') {
                 steps {
                     withEnv(["PATH+GO=${GOPATH}/bin"]){
+                        sh 'go get'
                         sh 'go vet .'
                         echo 'Running linting'
                         sh 'golint .'
